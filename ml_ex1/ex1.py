@@ -12,7 +12,8 @@ warmUpExercise()
 
 # ======================= Part 2: Plotting =======================
 print('Plotting Data ...\n')
-Data1 = np.loadtxt('ex1data1.txt', delimiter=',')
+Data1 = np.loadtxt('ex1data1.txt', delimiter=',')  # use this one when execute the code
+# Data1 = np.loadtxt('ml_ex1/ex1data1.txt', delimiter=',')  # use this one when run in console
 X = Data1[:,0]
 y = Data1[:,1]
 m = y.size  # number of training examples
@@ -73,3 +74,35 @@ print('For population = 70,000, we predict a profit of %f\n' % (predict2*10000))
 
 # ============= Part 4: Visualizing J(theta_0, theta_1) =============
 print('Visualizing J(theta_0, theta_1) ...\n')
+theta0_vals = np.linspace(-10, 10, 100)
+theta1_vals = np.linspace(-1, 4, 100)
+
+# initialize J_vals to a matrix of 0's
+J_vals = np.zeros((theta0_vals.size, theta1_vals.size))
+
+# Fill out J_vals
+for i in range(1, theta0_vals.size):
+    for j in range(1, theta1_vals.size):
+        t = np.array([theta0_vals[i], theta1_vals[j]])
+        J_vals[i][j] = computeCost(X, y, t)
+
+# Surface plot
+from mpl_toolkits.mplot3d import Axes3D  # noqa: F401 unused import
+from matplotlib import cm
+from matplotlib.ticker import LinearLocator, FormatStrFormatter
+
+fig = plt.figure()
+# fig, ax = plt.subplots(2,1)
+ax1 = fig.gca(projection='3d')
+
+theta0, theta1 = np.meshgrid(theta0_vals, theta1_vals)
+surf = ax1.plot_surface(theta1, theta0, J_vals, cmap=cm.coolwarm,
+                       linewidth=0, antialiased=True)
+plt.show()
+
+# Contour plot
+fig, ax = plt.subplots()
+CS = ax.contour(theta0, theta1, J_vals, np.logspace(-2, 3, 20))
+ax.clabel(CS, inline=1, fontsize=10)
+plt.show()
+
