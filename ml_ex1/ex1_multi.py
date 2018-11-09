@@ -114,7 +114,48 @@ x = np.array([1650, 3])
 x = (x - mu) / sigma
 x = np.hstack((np.ones(1), x))
 price = theta @ x.T  # % You should change this
-print(price)  # 293092.21273075533
+
+# % ============================================================
+print('Predicted price of a 1650 sq-ft, 3 br house (using gradient descent):\n $%f \n' % price)  # 293092.212731
+# input('Program paused. Press enter to continue.\n')
+
+# %% ================ Part 3: Normal Equations ================
+print('Solving with normal equations...\n')
+#
+# % ====================== YOUR CODE HERE ======================
+# % Instructions: The following code computes the closed form
+# %               solution for linear regression using the normal
+# %               equations. You should complete the code in
+# %               normalEqn.m
+# %
+# %               After doing so, you should complete this code
+# %               to predict the price of a 1650 sq-ft, 3 br house.
+# %
+
+# %% Load Data
+Data3 = np.loadtxt('ex1data2.txt', delimiter=',')
+X_ = Data3[:,:2]
+y_ = Data3[:, 2]
+
+# % Add intercept term to
+X_ = np.hstack((np.ones(m).reshape(m,1), X_))
+
+# % Calculate the parameters from the normal equation
+from ml_ex1.normalEqn import normalEqn
+theta = normalEqn(X_, y_)
+
+# % Display normal equation's result
+print('Theta computed from the normal equations: \n')
+print(' {} \n'.format(theta))
+print('\n')
+
+# % Estimate the price of a 1650 sq-ft, 3 br house
+# % ====================== YOUR CODE HERE ======================
+x = np.array([1, 1650, 3])
+price = theta @ x  # % You should change this
+#
+#
 # % ============================================================
 
+print('Predicted price of a 1650 sq-ft, 3 br house (using normal equations):\n $%f\n' % price)
 

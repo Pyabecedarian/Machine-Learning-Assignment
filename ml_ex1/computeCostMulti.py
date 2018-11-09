@@ -13,7 +13,7 @@ def computeCostMulti(X, y, theta):
     :return: J:  Cost Function
     """
     # Initialize some useful values
-    m =y.size  # number of training examples
+    m = y.size  # number of training examples
 
     # % You need to return the following variables correctly
     # J = 0

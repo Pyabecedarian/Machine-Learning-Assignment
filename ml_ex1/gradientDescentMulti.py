@@ -52,4 +52,3 @@ if __name__ == '__main__':
 
     theta, J_history = gradientDescentMulti(X, y, theta, 0.3, 20)
     # Turns out alpha = 0.5 is good.  (In fact, alpha can be proximately equal but less then 1.)
-    print(theta)
