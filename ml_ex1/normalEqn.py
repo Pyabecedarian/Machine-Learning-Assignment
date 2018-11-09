@@ -1,4 +1,5 @@
 import numpy as np
+from numpy.linalg import pinv
 
 
 def normalEqn(X, y):
@@ -12,34 +13,14 @@ def normalEqn(X, y):
     """
 
     theta = np.zeros(X[1].size)
-    #
     # % ====================== YOUR CODE HERE ======================
     # % Instructions: Complete the code to compute the closed form solution
     # %               to linear regression and put the result in theta.
-    # %
-    from numpy.linalg import pinv
+
     theta = pinv(X.T @ X) @ X.T @ y
     # % ---------------------- Sample Solution ----------------------
     #
-    #
-    #
-    #
     # % -------------------------------------------------------------
-    #
     return theta
-#
-# % ============================================================
 
-
-if __name__ == '__main__':
-    # Data3 = np.loadtxt('ml_ex1/ex1data2.txt', delimiter=',')
-    Data3 = np.loadtxt('ex1data2.txt', delimiter=',')
-    X = Data3[:,:2]
-    y = Data3[:, 2]
-    m = y.size
-
-    X = np.hstack((np.ones(m).reshape(m, 1), X))
-    print(X.shape, y.shape)
-
-    theta = normalEqn(X, y)
-    print(theta)
+    # % ============================================================

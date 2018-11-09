@@ -1,5 +1,5 @@
 import numpy as np
-
+from ml_ex1.computeCost import computeCost
 
 def gradientDescent(X, y, theta, alpha, num_iters):
     """
@@ -7,19 +7,13 @@ def gradientDescent(X, y, theta, alpha, num_iters):
     theta = GRADIENTDESCENT(X, y, theta, alpha, num_iters) updates theta by
     taking num_iters gradient steps with learning rate alpha
     """
-    from ml_ex1.computeCost import computeCost
 
     # Initialize some useful values
     m = y.size
     J_history = np.zeros(num_iters)
 
-    # delta = np.zeros(2)                                                # 1st + 2nd
     for i in range(num_iters):
-        # for j in range(2):
-        #     # delta[j] = np.sum((theta @ X.T - y) * X[:, j]) / m       # 1st
-        #     delta[j] = ((theta @ X.T - y) @ X[:, j]) / m               # 2nd
-        # theta = theta - alpha * delta                                  # 1st + 2nd
-        delta = ((theta@X.T - y) @ X) / m                                # last
+        delta = ((theta@X.T - y) @ X) / m
 
         # Update theta in every iteration
         theta = theta - alpha * delta
@@ -28,19 +22,3 @@ def gradientDescent(X, y, theta, alpha, num_iters):
         J_history[i] = computeCost(X, y, theta)
 
     return theta, J_history
-
-
-if __name__ == '__main__':
-    Data1 = np.loadtxt('ex1data1.txt', delimiter=',')
-    X = Data1[:, 0]
-    y = Data1[:, 1]
-    m = y.size
-
-    X.shape = (m, 1)  # Shape X explicitly a Column Vector
-    X = np.hstack((np.ones(m).reshape(m, 1), X))
-    theta = np.zeros(2)  # initialize fitting parameters
-
-    iterations = 1500
-    alpha = 0.01
-
-    theta, J = gradientDescent(X, y, theta, alpha, iterations)

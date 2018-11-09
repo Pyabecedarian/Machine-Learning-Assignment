@@ -26,14 +26,3 @@ def computeCostMulti(X, y, theta):
     J = (A.T @ A) / (2*m)
 
     return J
-# % =========================================================================
-if __name__ == '__main__':
-
-    Data2 = np.loadtxt('ex1data2.txt', delimiter=',')
-    X = Data2[:, :2]
-    y = Data2[:, 2]
-    m = y.size
-    X = np.hstack((np.ones(m).reshape(m, 1), X))
-
-    J = computeCostMulti(X, y, theta=np.array([0,0,0]))
-    print(J)

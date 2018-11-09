@@ -1,4 +1,5 @@
 import numpy as np
+from copy import deepcopy
 
 
 def featureNormalize(X):
@@ -13,9 +14,8 @@ def featureNormalize(X):
     """
     m = X[:,0].size  # num of training sets
 
-
     # You need to set these values correctly
-    X_norm = X
+    X_norm = deepcopy(X)
     mu = np.zeros(X.ndim)
     sigma = np.zeros(X.ndim)
 
@@ -31,23 +31,10 @@ def featureNormalize(X):
     #                feature and each row is an example. You need
     #                to perform the normalization separately for
     #                each feature.
-    mu = np.sum(X, axis=0) / m                        # Sum all element in each column
-    sigma = np.std(X, axis=0)                         # Standard Deviation in each column
-    # sigma = np.max(X,axis=0) - np.min(X, axis=0)    # Max - Min in each column
+    mu = np.sum(X, axis=0) / m                        # Sum all element of each column
+    sigma = np.std(X, axis=0)                         # Standard Deviation of each column
+    # sigma = np.max(X,axis=0) - np.min(X, axis=0)    # (Max - Min) of each column
 
-    # for i in range(X.ndim):                         # 1st
-    #     X_norm[:,i] = (X[:,i] - mu[i]) / sigma[i]   # 1st
     X_norm = (X - mu) / sigma
 
     return X_norm, mu, sigma
-
-
-if __name__ == '__main__':
-    # Data2 = np.loadtxt('ml_ex1/ex1data2.txt', delimiter=',')
-    Data2 = np.loadtxt('ex1data2.txt', delimiter=',')
-    X = Data2[:,:2]
-    y = Data2[:, 2]
-
-    m = y.size
-
-    X_norm, mu, sigma = featureNormalize(X)

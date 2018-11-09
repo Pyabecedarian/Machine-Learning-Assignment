@@ -7,7 +7,7 @@ def plotData(x, y):
     PLOTDATA(x,y) plots the data points and gives the figure axes labels of
     population and profit.
     """
-    # plt.figure(1)
+    plt.figure(1)
     plt.scatter(x, y, c='red', marker='x', label='Training data')
 
     # Plot Configuration
