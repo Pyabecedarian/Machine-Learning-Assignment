@@ -8,7 +8,7 @@ def computeCost(X, y, theta):
     parameter for linear regression to fit the data points in X and y
 
     NOTE:
-              x0   x1
+              x0    x1
             [ 1     x1(1) ]        [  y(1) ]             [ theta0 ]
         X = [ 1     x1(2) ]    y = [  y(2) ]     theta = [ theta1 ]
             [  ...  ...   ]        [  ...  ]

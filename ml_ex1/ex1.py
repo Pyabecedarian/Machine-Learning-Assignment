@@ -36,6 +36,7 @@ alpha = 0.01
 print('\nTesting the cost function ...\n')
 # compute and display initial cost
 from ml_ex1.computeCost import computeCost
+from ml_ex1.computeCostMulti import computeCostMulti
 
 J = computeCost(X, y, theta)
 print('With theta = [0 ; 0]\nCost computed = %f\n' % J)

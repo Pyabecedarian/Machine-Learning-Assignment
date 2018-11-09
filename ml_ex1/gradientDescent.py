@@ -28,3 +28,19 @@ def gradientDescent(X, y, theta, alpha, num_iters):
         J_history[i] = computeCost(X, y, theta)
 
     return theta, J_history
+
+
+if __name__ == '__main__':
+    Data1 = np.loadtxt('ex1data1.txt', delimiter=',')
+    X = Data1[:, 0]
+    y = Data1[:, 1]
+    m = y.size
+
+    X.shape = (m, 1)  # Shape X explicitly a Column Vector
+    X = np.hstack((np.ones(m).reshape(m, 1), X))
+    theta = np.zeros(2)  # initialize fitting parameters
+
+    iterations = 1500
+    alpha = 0.01
+
+    theta, J = gradientDescent(X, y, theta, alpha, iterations)
