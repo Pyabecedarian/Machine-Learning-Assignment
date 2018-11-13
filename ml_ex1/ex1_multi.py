@@ -151,4 +151,3 @@ x = np.array([1, 1650, 3])
 price = theta @ x  # % You should change this
 # % ============================================================
 print('Predicted price of a 1650 sq-ft, 3 br house (using normal equations):\n $%f\n' % price)
-
