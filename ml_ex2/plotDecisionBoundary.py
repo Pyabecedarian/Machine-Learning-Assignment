@@ -26,7 +26,7 @@ def plotDecisionBoundary(theta, X, y):
         # is needed to define a line, so choose two endpoints
         plot_x = np.array([min(X[:,1]), max(X[:,1])-8])
         plot_y = (theta[0]*np.ones(2) + theta[1]*plot_x) / (-theta[2])
-        fig.plot(plot_x, plot_y, c='blue', linewidth=2, label='Decision Boundary')
+        plt.plot(plot_x, plot_y, c='blue', linewidth=2, label='Decision Boundary')
     else:
         # Decision Boundary is a contour line, lvl = theta @ X = 0
         u = np.linspace(-1, 1.5, 50)
@@ -43,4 +43,3 @@ def plotDecisionBoundary(theta, X, y):
         cs = plt.contour(u, v, z, 0)
         plt.legend([cs.collections[0]], ['Decision Boundary'])
     fig.show()
-

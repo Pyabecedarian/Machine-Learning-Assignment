@@ -24,6 +24,3 @@ def plotData(X, y):
     plt.scatter(X[neg, 0], X[neg, 1], c='yellow', marker='o', edgecolors='black')
     return fig
     # % =========================================================================
-
-
-
