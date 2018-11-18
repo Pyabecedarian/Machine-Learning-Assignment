@@ -124,7 +124,7 @@ plt.ylabel('Exam 2 score')
 # %  Predict probability for a student with score 45 on exam 1
 # %  and score 85 on exam 2
 
-prob = sigmoid([1,45,85] @ theta)
+prob = sigmoid(np.array([1,45,85]) @ theta)
 print('For a student with scores 45 and 85, we predict an admission probability of %f\n' % prob)
 print('Expected value: 0.775 ± 0.002\n\n')
 

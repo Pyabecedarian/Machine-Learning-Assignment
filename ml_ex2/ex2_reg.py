@@ -87,7 +87,7 @@ print(' 0.0085   0.0188   0.0001   0.0503   0.0115')
 # %
 
 # % Initialize fitting parameters
-m, n = X.shape
+_, n = X.shape
 init_theta = np.zeros(n)
 # init_theta = zeros(size(X, 2), 1)
 # % Set regularization parameter lambda to 1 (you should vary this)
@@ -95,6 +95,6 @@ init_theta = np.zeros(n)
 lambd = 1    # Just good
 # lambd = 100  # Underfitting
 
-# ☆☆☆ Use "Newton Conjugate-Gradient" to optimize the costFunctionReg(theta, X, y)
+# ☆☆☆ Use "Newton Conjugate-Gradient" to optimize costFunctionReg(theta, X, y)
 result = opt.minimize(fun=costFunctionReg, x0=init_theta, args=(X, y, lambd), method='TNC', jac=True)
 plotDecisionBoundary(result.x, X, y)

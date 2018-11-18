@@ -28,7 +28,7 @@ def plotDecisionBoundary(theta, X, y):
         plot_y = (theta[0]*np.ones(2) + theta[1]*plot_x) / (-theta[2])
         plt.plot(plot_x, plot_y, c='blue', linewidth=2, label='Decision Boundary')
     else:
-        # Decision Boundary is a contour line, lvl = theta @ X = 0
+        # Decision Boundary is a contour line, which lvl = theta @ X = 0
         u = np.linspace(-1, 1.5, 50)
         v = np.linspace(-1, 1.5, 50)
         # Evaluate z = X @ theta over the grid

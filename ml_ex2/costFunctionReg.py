@@ -28,10 +28,10 @@ def costFunctionReg(theta, X, y, lambd):
     #     z.shape = (m, ) = h.shape
     #     J.shape = ()
     #     J(θ) = -1/m * Sum[ -yi*log(h(xi)) - (1-yi)*log(1-h(xi)) ] + λ/2m * Sum[θj^2], for all i and, all j expect j=0
-    #     ∂J/∂θ = 1/m * Sum[(h(xi) - yi)*]xji] = X.T @ (h - y) / m
+    #     ∂J/∂θ = 1/m * Sum[(h(xi) - yi)*xji] = X.T @ (h - y) / m
     z = X @ theta
     h = sigmoid(z)
-    regtheta = np.hstack((0, theta[1:]))  # Reconstruct a new theta vector with fist element 0 for regularization
+    regtheta = np.hstack((0, theta[1:]))  # Reconstruct a new theta vector with first element 0
     J = (-y@np.log(h) - (1-y)@np.log(1-h)) / m + lambd * (regtheta @ regtheta) / (2*m)
     grad = X.T@(h - y) / m + (lambd/m) * regtheta
 

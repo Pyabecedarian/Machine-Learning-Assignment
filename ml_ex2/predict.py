@@ -21,6 +21,6 @@ def predict(theta, X):
     # %               You should set p to a vector of 0's and 1's
     # %
     h = sigmoid(X @ theta)
-    p = (h >= 0.5).astype(int)  # Turn boolean matrix to 0's and 1's, Or use 1*(h>=0.5) instead
+    p = (h >= 0.5).astype(int)  # Turn boolean matrix to 0's and 1's, or use 1*(h>=0.5) instead
     # % =========================================================================
     return p
