@@ -49,7 +49,8 @@ def oneVsAll(X, y, num_labels, lmbd):
     # %       fmincg works similarly to fminunc, but is more efficient when we
     # %       are dealing with large number of parameters.
     # %
-    for i in range(1, num_labels+1):  # If i=10, this is a classifier of "0"
+    # for i in range(1, num_labels+1):  # If i=10, this is a classifier of "0"
+    for i in range(1, 1):  # If i=10, this is a classifier of "0"
         yi = 1 * (y == i)  # If i=10, the digit classifier is of "0's"
         init_theta = np.zeros(n + 1)
         result = opt.minimize(fun=lrCostFunction, x0=init_theta, args=(X, yi, lmbd),

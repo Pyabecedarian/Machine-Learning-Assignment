@@ -1,5 +1,6 @@
 import numpy as np
 from ml_ex3.sigmoid import sigmoid
+import scipy.io as sio
 
 
 def lrCostFunction(theta, X, y, lmbd):
@@ -45,14 +46,27 @@ def lrCostFunction(theta, X, y, lmbd):
     regTheta = np.hstack((0, theta[1:]))
 
     # Unregularized cost ---- J
-    J_unreg = (-y@np.log(h) - (1-y)@np.log(1-h)) / m
+    J_unreg = (-y @ np.log(h) - (1 - y) @ np.log(1 - h)) / m
     # Regularize J
-    J = J_unreg + lmbd * (regTheta @ regTheta) / (2*m)
+    J = J_unreg + lmbd * (regTheta @ regTheta) / (2 * m)
 
     # Unregularized gradient ----  ∂J/∂θ
-    grad_unreg = X.T @ (h - y) / m   # Also:  grad_unreg =  (h - y) @ X / m
+    grad_unreg = X.T @ (h - y) / m  # Also:  grad_unreg =  (h - y) @ X / m
     # Regularize grad
     grad = grad_unreg + lmbd * regTheta / m
 
     # % =============================================================
     return J, grad
+
+
+if __name__ == '__main__':
+    data_dict = sio.loadmat('ex3data1.mat')  # % training data will be stored in arrays X, y
+    X = data_dict['X']
+    y = data_dict['y'].flatten()
+    theta_t = np.array([-2, -1, 1, 2])
+    X_t = np.hstack((np.ones(5).reshape(5, 1), np.arange(1, 16).reshape(3, 5).T / 10))
+    y_t = 1 * (np.array([1, 0, 1, 0, 1]) >= 0.5)
+    lambda_t = 3
+    J, grad = lrCostFunction(theta_t, X_t, y_t, lambda_t)
+    print(J)
+    print(grad)
