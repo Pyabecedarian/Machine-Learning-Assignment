@@ -178,22 +178,21 @@ print('\nTraining Neural Network... \n')
 # %  value to see how more training helps.
 
 # %  You should also try different values of lambda
-lmbd = 1
+lmbd = 2
 
 # % Now, costFunction is a function that takes in only one argument (the
 # % neural network parameters)
 start_time = time.time()
 result = opt.minimize(fun=nn_cost_function, x0=initial_nn_params, args=(
     input_layer_size, hidden_layer_size, num_labels, X, y, lmbd), method='CG',
-                      jac=True, options={'maxiter': 400, 'disp': True})
+                      jac=True, options={'maxiter': 50, 'disp': True})
 print('OK,  -------%s seconds' % (time.time() - start_time))
 """
 result.x
 result.fun
 result.jac
 """
-# nn_params = result.x
-# cost = result.fun
+nn_params = result.x
 
 # % Obtain Theta1 and Theta2 back from nn_params
 Theta1 = nn_params[:hidden_layer_size * (input_layer_size + 1)].reshape(

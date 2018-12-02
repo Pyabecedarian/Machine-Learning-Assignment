@@ -103,6 +103,7 @@ print('Theta computed from gradient descent: \n')
 print(' {} \n'.format(theta))
 print('\n')
 
+
 # % Estimate the price of a 1650 sq-ft, 3 br house
 # % ====================== YOUR CODE HERE ======================
 # % Recall that the first column of X is all-ones. Thus, it does
