@@ -11,7 +11,6 @@ def featureNormalize(X, miu=None, sigma=None):
     :param X: X.shape = (m, p)
     :return:  X_normalized, mu, sigma
     """
-    m, p = X.shape
     if not isinstance(miu, None.__class__):
         return (X - miu) / sigma
     miu = np.mean(X, axis=0)  # vector of mean of each column of X
