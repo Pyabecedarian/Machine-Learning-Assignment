@@ -156,7 +156,7 @@ print('p7', '--'*20)
 # %  lambda = 0. You should try running the code with different values of
 # %  lambda to see how the fit and learning curve change.
 # %
-lmbd = 3
+lmbd = 1
 theta = trainLinearReg(X_poly, y, lmbd)
 plt.figure(1)
 plt.scatter(X, y, c='r', marker='x', label='Training Data')

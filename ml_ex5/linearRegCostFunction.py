@@ -31,7 +31,7 @@ def linearRegCostFunction(X, y, theta, lmbd):
     # NOTE:
     #      J(θ) = 1/m * Σm (hi - yi)^2 + λ/2m * Σi=1 (θ^2)
     #      h(x) = θ0 + θ1*x
-    # 1. ------------------------ Compute J(θ) ----------------------------------
+    # 1. --------------------------- Compute J(θ) -------------------------------
     # Unregularized J
     h = X @ theta            # h.shape = (12, )
     J = (h - y) @ (h - y) / (2*m)
@@ -45,6 +45,6 @@ def linearRegCostFunction(X, y, theta, lmbd):
     # Regularize grad
     reg_term_theta = lmbd * np.hstack((0, theta[1:])) / m
     grad += reg_term_theta
-
     # % =========================================================================
+
     return J, grad
